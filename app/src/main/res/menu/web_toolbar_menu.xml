@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/more"
+        android:icon="@drawable/more"
+        android:title="@string/more"
+        app:showAsAction="always">
+
+        <menu>
+            <item
+                android:id="@+id/share"
+                android:icon="@drawable/share_zone"
+                android:title="@string/share_zone" />
+
+            <item
+                android:id="@+id/collect"
+                android:icon="@drawable/collection"
+                android:title="@string/collection" />
+        </menu>
+
+    </item>
+</menu>
