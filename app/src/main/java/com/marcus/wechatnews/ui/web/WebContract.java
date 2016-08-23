@@ -10,11 +10,11 @@ public interface WebContract {
 
     interface View extends BaseView {
 
-        void setShare();
+        void setShare(int type);
     }
 
     interface Presenter extends BasePresenter<View> {
 
-        void shareToTimeline();
+        void shareToWX(int type);
     }
 }

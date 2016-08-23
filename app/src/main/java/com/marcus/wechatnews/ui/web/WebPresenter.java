@@ -24,7 +24,7 @@ public class WebPresenter implements WebContract.Presenter {
     }
 
     @Override
-    public void shareToTimeline() {
-        view.setShare();
+    public void shareToWX(int type) {
+        view.setShare(type);
     }
 }

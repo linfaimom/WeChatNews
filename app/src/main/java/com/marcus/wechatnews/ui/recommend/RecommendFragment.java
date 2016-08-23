@@ -89,6 +89,8 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
         });
         //刷新
         refreshLayout.setOnRefreshListener(this);
+//        refreshLayout.setProgressBackgroundColorSchemeResource(R.color.colorPrimary);
+        refreshLayout.setColorSchemeColors(getResources().getColor(R.color.yellow), getResources().getColor(R.color.colorAccent));
     }
 
     @Override
@@ -152,6 +154,7 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
     @Override
     public void setLoadFailed() {
         ToastUtil.showShort("加载失败~~");
+        loading = true;
     }
 
     @Override

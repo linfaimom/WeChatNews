@@ -18,7 +18,6 @@ import android.widget.ProgressBar;
 
 import com.marcus.wechatnews.MyApplication;
 import com.marcus.wechatnews.R;
-import com.marcus.wechatnews.utils.ToastUtil;
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
 import com.tencent.mm.sdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.sdk.modelmsg.WXWebpageObject;
@@ -131,11 +130,14 @@ public class WebActivity extends AppCompatActivity implements WebContract.View {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.share:
-                webPresenter.shareToTimeline();
+            case R.id.share_zone:
+                webPresenter.shareToWX(SendMessageToWX.Req.WXSceneTimeline);
+                return true;
+            case R.id.share_friends:
+                webPresenter.shareToWX(SendMessageToWX.Req.WXSceneSession);
                 return true;
             case R.id.collect:
-                ToastUtil.showShort("功能完善中，敬请期待~~");
+                webPresenter.shareToWX(SendMessageToWX.Req.WXSceneFavorite);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -148,7 +150,7 @@ public class WebActivity extends AppCompatActivity implements WebContract.View {
     }
 
     @Override
-    public void setShare() {
+    public void setShare(int type) {
         //初始化一个 WXWebpageObject 对象，填写 url
         WXWebpageObject webpage = new WXWebpageObject();
         webpage.webpageUrl = infos[0];
@@ -161,7 +163,7 @@ public class WebActivity extends AppCompatActivity implements WebContract.View {
         SendMessageToWX.Req req = new SendMessageToWX.Req();
         req.transaction = buildTransaction("webpage");
         req.message = msg;
-        req.scene = SendMessageToWX.Req.WXSceneTimeline;
+        req.scene = type;
         api.sendReq(req);
     }
 }

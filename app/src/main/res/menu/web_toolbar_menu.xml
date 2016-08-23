@@ -9,10 +9,14 @@
 
         <menu>
             <item
-                android:id="@+id/share"
+                android:id="@+id/share_zone"
                 android:icon="@drawable/share_zone"
                 android:title="@string/share_zone" />
 
+            <item
+                android:id="@+id/share_friends"
+                android:icon="@drawable/share_friends"
+                android:title="@string/share_friends" />
             <item
                 android:id="@+id/collect"
                 android:icon="@drawable/collection"
