@@ -2,6 +2,8 @@ package com.marcus.wechatnews.ui.web;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -18,6 +20,7 @@ import android.widget.ProgressBar;
 
 import com.marcus.wechatnews.MyApplication;
 import com.marcus.wechatnews.R;
+import com.marcus.wechatnews.utils.WeChatUtil;
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
 import com.tencent.mm.sdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.sdk.modelmsg.WXWebpageObject;
@@ -84,7 +87,6 @@ public class WebActivity extends AppCompatActivity implements WebContract.View {
                 view.loadUrl(url);
                 return true;
             }
-
         });
         webView.setWebChromeClient(new WebChromeClient() {
 
@@ -101,7 +103,6 @@ public class WebActivity extends AppCompatActivity implements WebContract.View {
                     }, 1200);
                 }
             }
-
         });
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(infos[0]);
@@ -130,12 +131,15 @@ public class WebActivity extends AppCompatActivity implements WebContract.View {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            //朋友圈
             case R.id.share_zone:
                 webPresenter.shareToWX(SendMessageToWX.Req.WXSceneTimeline);
                 return true;
+            //朋友
             case R.id.share_friends:
                 webPresenter.shareToWX(SendMessageToWX.Req.WXSceneSession);
                 return true;
+            //收藏
             case R.id.collect:
                 webPresenter.shareToWX(SendMessageToWX.Req.WXSceneFavorite);
                 return true;
@@ -158,7 +162,8 @@ public class WebActivity extends AppCompatActivity implements WebContract.View {
         WXMediaMessage msg = new WXMediaMessage(webpage);
         msg.title = infos[1];
         msg.description = infos[2];
-        //msg.thumbData = WeChatUtil.getHtmlByteArray(infos[3]);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        msg.thumbData = WeChatUtil.bmpToByteArray(bitmap, true);
         //构造一个 Req
         SendMessageToWX.Req req = new SendMessageToWX.Req();
         req.transaction = buildTransaction("webpage");
