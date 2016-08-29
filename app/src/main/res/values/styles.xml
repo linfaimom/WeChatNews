@@ -4,11 +4,15 @@
     <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/green</item>
-        <item name="colorPrimaryDark">@color/green</item>
+        <item name="colorPrimaryDark">@color/greenDark</item>
         <item name="colorAccent">#56abe4</item>
     </style>
 
     <style name="AppTheme" parent="BaseTheme">
+
+    </style>
+
+    <style name="SplashTheme" parent="BaseTheme">
 
     </style>
 

@@ -2,6 +2,10 @@
 <resources>
 
     <style name="AppTheme" parent="BaseTheme">
+
+    </style>
+
+    <style name="SplashTheme" parent="BaseTheme">
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 </resources>
