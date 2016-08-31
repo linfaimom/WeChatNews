@@ -13,7 +13,9 @@ public interface RecommendContract {
 
     interface View extends BaseView {
 
-        void setDataChange(List<WeChatData.ResultBean.ListBean> newsList);
+        void setDataInit(List<WeChatData.ResultBean.ListBean> newsList);
+
+        void setDataMore(List<WeChatData.ResultBean.ListBean> newsList);
 
         void setErrorMsg(String errorMsg);
 

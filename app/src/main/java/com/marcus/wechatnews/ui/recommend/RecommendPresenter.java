@@ -53,7 +53,7 @@ public class RecommendPresenter implements RecommendContract.Presenter {
                         @Override
                         public void onNext(WeChatData weChatData) {
                             totalPage = weChatData.getResult().getTotalPage();
-                            view.setDataChange(weChatData.getResult().getList());
+                            view.setDataMore(weChatData.getResult().getList());
                         }
                     });
         } else {
@@ -118,7 +118,7 @@ public class RecommendPresenter implements RecommendContract.Presenter {
 
                     @Override
                     public void onNext(WeChatData weChatData) {
-                        view.setDataChange(weChatData.getResult().getList());
+                        view.setDataInit(weChatData.getResult().getList());
                     }
                 });
     }

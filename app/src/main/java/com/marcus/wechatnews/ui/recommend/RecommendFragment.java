@@ -36,7 +36,6 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
     private LinearLayoutManager mLayoutManager;
     private ProgressDialog progressDialog;
     private List<WeChatData.ResultBean.ListBean> result = new ArrayList<>();
-    private boolean loading = true;
 
     @Override
     public int initContentView() {
@@ -65,23 +64,19 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
         //根据滑动来判断是否隐藏 fab
         recommendList.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                //记录当前页面所能见到的 item 的 position，可以理解为这是第几个 item
-                pastVisiblePosition = mLayoutManager.findFirstVisibleItemPosition();
-                //记录当前页面共有几个 item
-                visibleItemCount = mLayoutManager.getChildCount();
-                //记录共有多少个 item
-                totalItemCount = mLayoutManager.getItemCount();
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && pastVisiblePosition + 1 == newsListAdapter.getItemCount()) {
+                    recommendPresenter.showDialog();
+                    recommendPresenter.moreData();
+                }
+            }
 
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                pastVisiblePosition = mLayoutManager.findLastVisibleItemPosition();
                 if (dy > 5) {
                     recommendPresenter.hideFab();
-                    if (loading) {
-                        if ((visibleItemCount + pastVisiblePosition) >= totalItemCount) {
-                            loading = false;
-                            recommendPresenter.showDialog();
-                            recommendPresenter.moreData();
-                        }
-                    }
                 } else if (dy < -5) {
                     recommendPresenter.showFab();
                 }
@@ -101,11 +96,17 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
 
 
     @Override
-    public void setDataChange(List<WeChatData.ResultBean.ListBean> newsList) {
+    public void setDataInit(List<WeChatData.ResultBean.ListBean> newsList) {
+        result.addAll(newsList);
+        newsListAdapter.setData(newsList);
+        newsListAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void setDataMore(List<WeChatData.ResultBean.ListBean> newsList) {
         result.addAll(newsList);
         newsListAdapter.setData(result);
         newsListAdapter.notifyDataSetChanged();
-        loading = true;
     }
 
     @Override
@@ -154,7 +155,6 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
     @Override
     public void setLoadFailed() {
         ToastUtil.showShort("加载失败~~");
-        loading = true;
     }
 
     @Override
@@ -189,8 +189,8 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
     @Override
     public void onRefresh() {
         if (NetUtil.isConnected()) {
-            result.clear();
             recommendPresenter.resetData();
+            result.clear();
         } else {
             setRefreshFailed();
         }
