@@ -1,5 +1,6 @@
 package com.marcus.wechatnews.ui.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -67,6 +68,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<MyViewHolder> {
                 result.add(2, newsList.get(holder.getAdapterPosition()).getSource());
                 result.add(3, newsList.get(holder.getAdapterPosition()).getFirstImg());
                 WebActivity.startActivity(context, result);
+                ((Activity) context).overridePendingTransition(R.anim.activity_in_anim, 0);
             }
         });
     }

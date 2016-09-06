@@ -27,6 +27,7 @@ public class SplashActivity extends BaseActivity {
             public void run() {
                 MainActivity.startActivity(SplashActivity.this);
                 finish();
+                overridePendingTransition(R.anim.activity_in_anim, 0);
             }
         }, 1500);
     }
