@@ -13,7 +13,7 @@ import com.tencent.mm.sdk.openapi.WXAPIFactory;
 /**
  * Created by marcus on 16/8/12.
  */
-public class MyApplication extends Application {
+public class NewsApplication extends Application {
 
     //WeChat
     private static final String APP_ID = "wx53e4a61a2f06f182";

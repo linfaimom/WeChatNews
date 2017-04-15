@@ -9,7 +9,7 @@ import rx.Observable;
 /**
  * Created by marcus on 16/8/11.
  */
-public interface NewsServiceMethods {
+interface NewsServiceMethods {
 
     @GET("query")
     Observable<NewsModel> getData(@Query("key") String key);
