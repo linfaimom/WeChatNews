@@ -11,9 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.marcus.wechatnews.R;
-import com.marcus.wechatnews.bean.WeChatData;
+import com.marcus.wechatnews.model.NewsModel;
 import com.marcus.wechatnews.ui.adapter.NewsListAdapter.MyViewHolder;
-import com.marcus.wechatnews.ui.web.WebActivity;
+import com.marcus.wechatnews.ui.webview.WebViewActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -33,13 +33,13 @@ public class NewsListAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private final static String DEFAULT = "http://zxpic.gtimg.com/infonew/0/wechat_pics_-7132408.jpg/640";
 
     private Context context;
-    private List<WeChatData.ResultBean.ListBean> newsList;
+    private List<NewsModel.ResultBean.ListBean> newsList;
 
     @Inject
     public NewsListAdapter() {
     }
 
-    public void setData(List<WeChatData.ResultBean.ListBean> newsList) {
+    public void setData(List<NewsModel.ResultBean.ListBean> newsList) {
         this.newsList = newsList;
     }
 
@@ -67,7 +67,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<MyViewHolder> {
                 result.add(1, newsList.get(holder.getAdapterPosition()).getTitle());
                 result.add(2, newsList.get(holder.getAdapterPosition()).getSource());
                 result.add(3, newsList.get(holder.getAdapterPosition()).getFirstImg());
-                WebActivity.startActivity(context, result);
+                WebViewActivity.startActivity(context, result);
                 ((Activity) context).overridePendingTransition(R.anim.activity_in_anim, 0);
             }
         });

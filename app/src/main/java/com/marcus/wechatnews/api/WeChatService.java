@@ -1,6 +1,6 @@
 package com.marcus.wechatnews.api;
 
-import com.marcus.wechatnews.bean.WeChatData;
+import com.marcus.wechatnews.model.NewsModel;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -12,9 +12,9 @@ import rx.Observable;
 public interface WeChatService {
 
     @GET("query")
-    Observable<WeChatData> getData(@Query("key") String key);
+    Observable<NewsModel> getData(@Query("key") String key);
 
     @GET("query")
-    Observable<WeChatData> getData(@Query("key") String key,
-                                   @Query("pno") int pno);
+    Observable<NewsModel> getData(@Query("key") String key,
+                                  @Query("pno") int pno);
 }

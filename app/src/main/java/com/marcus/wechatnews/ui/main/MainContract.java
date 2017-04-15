@@ -8,7 +8,7 @@ import com.marcus.wechatnews.ui.BaseView;
 /**
  * Created by marcus on 16/8/11.
  */
-public interface MainContract {
+interface MainContract {
 
     interface View extends BaseView {
 

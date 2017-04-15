@@ -1,6 +1,6 @@
 package com.marcus.wechatnews.api;
 
-import com.marcus.wechatnews.bean.WeChatData;
+import com.marcus.wechatnews.model.NewsModel;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -28,11 +28,11 @@ public class WeChatApi {
         weChatService = retrofit.create(WeChatService.class);
     }
 
-    public Observable<WeChatData> getData() {
+    public Observable<NewsModel> getData() {
         return weChatService.getData(KEY).subscribeOn(Schedulers.io());
     }
 
-    public Observable<WeChatData> getData(int page) {
+    public Observable<NewsModel> getData(int page) {
         return weChatService.getData(KEY, page).subscribeOn(Schedulers.io());
     }
 }

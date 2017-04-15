@@ -1,4 +1,4 @@
-package com.marcus.wechatnews.ui.web;
+package com.marcus.wechatnews.ui.webview;
 
 import com.marcus.wechatnews.ui.BasePresenter;
 import com.marcus.wechatnews.ui.BaseView;

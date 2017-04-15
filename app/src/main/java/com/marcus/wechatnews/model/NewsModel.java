@@ -1,4 +1,4 @@
-package com.marcus.wechatnews.bean;
+package com.marcus.wechatnews.model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by marcus on 16/8/11.
  */
-public class WeChatData implements Serializable {
+public class NewsModel implements Serializable {
 
     /**
      * reason : success
@@ -25,7 +25,7 @@ public class WeChatData implements Serializable {
     private ResultBean result;
     private int error_code;
 
-    WeChatData() {
+    public NewsModel() {
     }
 
     public String getReason() {

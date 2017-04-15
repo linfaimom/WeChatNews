@@ -3,7 +3,7 @@ package com.marcus.wechatnews.ui.recommend;
 import android.os.Handler;
 
 import com.marcus.wechatnews.api.WeChatApi;
-import com.marcus.wechatnews.bean.WeChatData;
+import com.marcus.wechatnews.model.NewsModel;
 
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
@@ -11,13 +11,13 @@ import rx.android.schedulers.AndroidSchedulers;
 /**
  * Created by marcus on 16/8/15.
  */
-public class RecommendPresenter implements RecommendContract.Presenter {
+class RecommendPresenter implements RecommendContract.Presenter {
 
-    int totalPage;
-    int current = 1;
+    private int totalPage;
+    private int current = 1;
     private RecommendContract.View view;
 
-    public RecommendPresenter() {
+    RecommendPresenter() {
     }
 
     @Override
@@ -26,7 +26,7 @@ public class RecommendPresenter implements RecommendContract.Presenter {
         if (current < totalPage) {
             new WeChatApi().getData(++current)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Observer<WeChatData>() {
+                    .subscribe(new Observer<NewsModel>() {
                         @Override
                         public void onCompleted() {
                             new Handler().postDelayed(new Runnable() {
@@ -51,9 +51,9 @@ public class RecommendPresenter implements RecommendContract.Presenter {
                         }
 
                         @Override
-                        public void onNext(WeChatData weChatData) {
-                            totalPage = weChatData.getResult().getTotalPage();
-                            view.setDataMore(weChatData.getResult().getList());
+                        public void onNext(NewsModel newsModel) {
+                            totalPage = newsModel.getResult().getTotalPage();
+                            view.setDataMore(newsModel.getResult().getList());
                         }
                     });
         } else {
@@ -93,7 +93,7 @@ public class RecommendPresenter implements RecommendContract.Presenter {
         current = 1;
         new WeChatApi().getData(current)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<WeChatData>() {
+                .subscribe(new Observer<NewsModel>() {
                     @Override
                     public void onCompleted() {
                         new Handler().postDelayed(new Runnable() {
@@ -117,8 +117,8 @@ public class RecommendPresenter implements RecommendContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(WeChatData weChatData) {
-                        view.setDataInit(weChatData.getResult().getList());
+                    public void onNext(NewsModel newsModel) {
+                        view.setDataInit(newsModel.getResult().getList());
                     }
                 });
     }

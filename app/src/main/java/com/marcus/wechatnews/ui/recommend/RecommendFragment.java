@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.marcus.wechatnews.R;
-import com.marcus.wechatnews.bean.WeChatData;
+import com.marcus.wechatnews.model.NewsModel;
 import com.marcus.wechatnews.ui.BaseFragment;
 import com.marcus.wechatnews.ui.adapter.NewsListAdapter;
 import com.marcus.wechatnews.utils.NetUtil;
@@ -26,7 +26,7 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
         View.OnClickListener,
         SwipeRefreshLayout.OnRefreshListener {
 
-    int pastVisiblePosition, visibleItemCount, totalItemCount;
+    private int pastVisiblePosition;
     @BindView(R.id.recommend_list)
     RecyclerView recommendList;
     @BindView(R.id.refresh)
@@ -35,7 +35,7 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
     private RecommendPresenter recommendPresenter;
     private LinearLayoutManager mLayoutManager;
     private ProgressDialog progressDialog;
-    private List<WeChatData.ResultBean.ListBean> result = new ArrayList<>();
+    private List<NewsModel.ResultBean.ListBean> result = new ArrayList<>();
 
     @Override
     public int initContentView() {
@@ -96,14 +96,14 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
 
 
     @Override
-    public void setDataInit(List<WeChatData.ResultBean.ListBean> newsList) {
+    public void setDataInit(List<NewsModel.ResultBean.ListBean> newsList) {
         result.addAll(newsList);
         newsListAdapter.setData(newsList);
         newsListAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void setDataMore(List<WeChatData.ResultBean.ListBean> newsList) {
+    public void setDataMore(List<NewsModel.ResultBean.ListBean> newsList) {
         result.addAll(newsList);
         newsListAdapter.setData(result);
         newsListAdapter.notifyDataSetChanged();

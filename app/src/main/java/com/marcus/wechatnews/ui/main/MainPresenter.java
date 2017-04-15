@@ -10,7 +10,7 @@ import javax.inject.Inject;
 /**
  * Created by marcus on 16/8/12.
  */
-public class MainPresenter implements MainContract.Presenter {
+class MainPresenter implements MainContract.Presenter {
 
     private long exitTime = 0;
     private MainContract.View view;

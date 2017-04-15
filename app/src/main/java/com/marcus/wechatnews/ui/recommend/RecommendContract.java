@@ -1,6 +1,6 @@
 package com.marcus.wechatnews.ui.recommend;
 
-import com.marcus.wechatnews.bean.WeChatData;
+import com.marcus.wechatnews.model.NewsModel;
 import com.marcus.wechatnews.ui.BasePresenter;
 import com.marcus.wechatnews.ui.BaseView;
 
@@ -9,13 +9,13 @@ import java.util.List;
 /**
  * Created by marcus on 16/8/15.
  */
-public interface RecommendContract {
+interface RecommendContract {
 
     interface View extends BaseView {
 
-        void setDataInit(List<WeChatData.ResultBean.ListBean> newsList);
+        void setDataInit(List<NewsModel.ResultBean.ListBean> newsList);
 
-        void setDataMore(List<WeChatData.ResultBean.ListBean> newsList);
+        void setDataMore(List<NewsModel.ResultBean.ListBean> newsList);
 
         void setErrorMsg(String errorMsg);
 
