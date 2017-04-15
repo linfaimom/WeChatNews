@@ -2,7 +2,7 @@ package com.marcus.wechatnews.ui.recommend;
 
 import android.os.Handler;
 
-import com.marcus.wechatnews.api.WeChatApi;
+import com.marcus.wechatnews.service.NewsService;
 import com.marcus.wechatnews.model.NewsModel;
 
 import rx.Observer;
@@ -24,7 +24,7 @@ class RecommendPresenter implements RecommendContract.Presenter {
     public void moreData() {
         totalPage = totalPage == 0 ? 2 : totalPage;
         if (current < totalPage) {
-            new WeChatApi().getData(++current)
+            new NewsService().getData(++current)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Observer<NewsModel>() {
                         @Override
@@ -91,7 +91,7 @@ class RecommendPresenter implements RecommendContract.Presenter {
     public void resetData() {
         //加载第一页
         current = 1;
-        new WeChatApi().getData(current)
+        new NewsService().getData(current)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<NewsModel>() {
                     @Override

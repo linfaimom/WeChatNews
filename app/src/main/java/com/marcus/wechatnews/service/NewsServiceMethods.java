@@ -1,4 +1,4 @@
-package com.marcus.wechatnews.api;
+package com.marcus.wechatnews.service;
 
 import com.marcus.wechatnews.model.NewsModel;
 
@@ -9,7 +9,7 @@ import rx.Observable;
 /**
  * Created by marcus on 16/8/11.
  */
-public interface WeChatService {
+public interface NewsServiceMethods {
 
     @GET("query")
     Observable<NewsModel> getData(@Query("key") String key);
