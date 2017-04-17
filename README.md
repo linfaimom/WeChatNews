@@ -4,7 +4,7 @@
 #### 效果图：
 ![](https://github.com/linfaimom/WeChatNews/raw/master/screenshots/screenshots.png)
 
-***考虑到 Github 上展现图片不便，此图为拼合版本，请移步 screenshots 文件夹查看清晰的每张截图。***
+***考虑到 Github 上展现图片不便，此图为拼合版本，请移步 screenshots 文件夹查看清晰的每张截图***
 
 ***也可在 [此处](https://github.com/linfaimom/WeChatNews/releases) 下载 APP 安装体验***
 
