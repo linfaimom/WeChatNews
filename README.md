@@ -1,14 +1,14 @@
 # WeChatNews
 采用 MVP 模式构建的微信精选 APP<br>
 
-#### 效果图：
+#### 效果图
 ![](https://github.com/linfaimom/WeChatNews/raw/master/screenshots/screenshots.png)
 
 ***考虑到 Github 上展现图片不便，此图为拼合版本，请移步 screenshots 文件夹查看清晰的每张截图***
 
 ***也可在 [此处](https://github.com/linfaimom/WeChatNews/releases) 下载 APP 安装体验***
 
-#### 背景：
+#### 背景
 做这个小项目的初衷是为了总结与实践当时所学知识，诸如各种热门的新框架、新工具等，将其进行一个整合应用以提升自己的 Android 开发技能。而且因为我老爸经常喜欢看微信的文章，那为啥不趁机给他弄一个专门提供微信精选的新闻 APP 呢？
 
 #### 所用工具/技术
