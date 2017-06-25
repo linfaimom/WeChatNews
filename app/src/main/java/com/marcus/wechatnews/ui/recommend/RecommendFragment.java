@@ -89,7 +89,7 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
     }
 
     @Override
-    public void iniInjector() {
+    public void initInjector() {
         recommendPresenter = new RecommendPresenter();
         newsListAdapter = new NewsListAdapter();
     }

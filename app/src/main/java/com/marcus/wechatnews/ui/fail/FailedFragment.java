@@ -35,7 +35,7 @@ public class FailedFragment extends BaseFragment {
     }
 
     @Override
-    public void iniInjector() {
+    public void initInjector() {
 
     }
 }
