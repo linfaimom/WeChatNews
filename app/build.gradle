@@ -42,7 +42,7 @@ dependencies {
     //Rx
     compile 'io.reactivex:rxjava:1.1.8'
     compile 'io.reactivex:rxandroid:1.2.1'
-    //Gson
+    //GSON
     compile 'com.google.code.gson:gson:2.7'
     //Retrofit
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
