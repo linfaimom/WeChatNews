@@ -7,5 +7,5 @@ import dagger.Component;
  */
 @Component(modules = WebModule.class)
 public interface WebComponent {
-    void inject(WebActivity webActivity);
+    void inject(WebViewActivity webActivity);
 }

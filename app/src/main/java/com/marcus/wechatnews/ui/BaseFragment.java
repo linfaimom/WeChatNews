@@ -24,7 +24,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(initContentView(), null);
-        iniInjector();
+        initInjector();
         getFab();
         getToolBar();
         initUI();
@@ -35,7 +35,7 @@ public abstract class BaseFragment extends Fragment {
 
     public abstract void initUI();
 
-    public abstract void iniInjector();
+    public abstract void initInjector();
 
     public void getFab() {
         this.faBtn = ((MainActivity) getActivity()).getFaBtn();
