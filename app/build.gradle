@@ -48,10 +48,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     //Dagger2
     implementation 'com.google.dagger:dagger:2.6'
-    annotationProcessor 'com.google.dagger:dagger-implementationr:2.6'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.6'
     //ButterKnife
     implementation 'com.jakewharton:butterknife:8.2.1'
-    annotationProcessor 'com.jakewharton:butterknife-implementationr:8.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.2.1'
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation files('libs/libammsdk.jar')
