@@ -26,11 +26,11 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
         View.OnClickListener,
         SwipeRefreshLayout.OnRefreshListener {
 
-    private int pastVisiblePosition;
     @BindView(R.id.recommend_list)
     RecyclerView recommendList;
     @BindView(R.id.refresh)
     SwipeRefreshLayout refreshLayout;
+    private int pastVisiblePosition;
     private NewsListAdapter newsListAdapter;
     private RecommendPresenter recommendPresenter;
     private LinearLayoutManager mLayoutManager;

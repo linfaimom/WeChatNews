@@ -2,8 +2,8 @@ package com.marcus.wechatnews.ui.recommend;
 
 import android.os.Handler;
 
-import com.marcus.wechatnews.service.NewsService;
 import com.marcus.wechatnews.model.NewsModel;
+import com.marcus.wechatnews.service.NewsService;
 
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
